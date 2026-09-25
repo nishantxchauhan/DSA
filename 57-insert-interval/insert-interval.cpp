@@ -3,7 +3,6 @@ public:
     vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
         vector<vector<int>> vec;
         vector<vector<int>> result;
-        sort(intervals.begin(), intervals.end());
         bool inserted = false;
         for (int i = 0; i < intervals.size(); i++) {
           if (!inserted && newInterval[0] < intervals[i][0]) {
@@ -13,7 +12,8 @@ public:
            vec.push_back(intervals[i]);
         }
         if (!inserted) {
-         vec.push_back(newInterval);
+            //Handle the case if the insetion need to happen in the end
+         vec.push_back(newInterval); 
         }
         int start=vec[0][0];
         int end=vec[0][1];
